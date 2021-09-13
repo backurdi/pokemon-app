@@ -1,6 +1,7 @@
 {
   "name": "pokemon-app",
   "version": "0.0.0",
+  "author": "Bachir Kurdi",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
