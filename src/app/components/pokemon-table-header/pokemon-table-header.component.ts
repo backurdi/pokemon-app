@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonTableHeaderComponent implements OnInit {
 
+  searchText:string = '';
+
   constructor() { }
 
   ngOnInit(): void {

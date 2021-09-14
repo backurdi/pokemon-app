@@ -37,10 +37,24 @@ export enum TYPE_COLOURS {
     name: string;
     id: number;
     sprites: Sprites;
-    abilities?: Array<any>;
-    types?: Array<any>;
+    abilities?: Array<Ability>;
+    types: Array<Type>;
+    weight:number;
+    height:number;
+  }
+
+  interface Ability {
+    ability: {name: string, url: string}
+    is_hidden: false
+  }
+
+  interface Type {
+    type: {
+        name: string,
+        url: string 
+    }
   }
 
   export interface Sprites {
-    front_default: string;
+    other: {'official-artwork':{front_default:string}};
   }

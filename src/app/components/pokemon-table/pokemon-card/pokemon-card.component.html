@@ -1,1 +1,28 @@
-<p>pokemon-card works!</p>
+<div class="pokemon-card-wrapper" [style.background]="_getTypeColour(pokemon.types[0].type.name)">
+    <div class="pokemon-card">
+      <img
+        class="pokemon-card__image"
+        [src]="pokemon.sprites.other['official-artwork'].front_default"
+        alt=""
+      />
+      <p class="pokemon-card__name">{{ pokemon.name }}</p>
+      <div class="pokemon-card__size">
+          <p class="pokemon-card__size__height">{{ pokemon.height }}</p>
+          <p class="pokemon-card__size__weight">{{ pokemon.weight }}</p>
+      </div>
+      <div class="pokemon-card__abilities">
+        <p *ngFor="let ability of pokemon.abilities">
+          {{ ability.ability.name }}
+        </p>
+      </div>
+      <div class="pokemon-card__types">
+        <p
+          *ngFor="let type of pokemon.types"
+          class="types"
+          [style.background]="_getTypeColour(type.type.name)"
+        >
+          {{ type.type.name | titlecase }}
+        </p>
+      </div>
+    </div>
+</div>

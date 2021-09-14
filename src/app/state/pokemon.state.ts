@@ -16,7 +16,7 @@ export class PokemonState {
 
 
   state:BehaviorSubject<StateInterface> = new BehaviorSubject({
-    pokemons:{} as PokemonDetails[],
+    pokemons:[] as PokemonDetails[],
     offset:''
   });
 
@@ -26,7 +26,6 @@ export class PokemonState {
     if(this.state.value.offset !== offset){
       return this.pokemonService.getPokemon(size, offset).pipe(
         switchMap((pokemonResponse: PokeAPI)=>{
-          debugger;
           return forkJoin(pokemonResponse.results.map((pokemon: Results)=>this.pokemonService.getPokemonDetails(pokemon.name)))
         }),
         tap((pokemons: PokemonDetails[])=>{
