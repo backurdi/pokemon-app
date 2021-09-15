@@ -1,10 +1,16 @@
 <div class="pokemon-header-wrapper">
     <input type="text" [(ngModel)]="searchText" placeholder="Enter Pokemon name" (ngModelChange)="searchEvent()">
     
-    <select name="cars" id="cars" [(ngModel)]="sortText" (ngModelChange)="sortEvent()">
+    <select name="sort" [(ngModel)]="sortText" (ngModelChange)="sortEvent()">
         <option ngValue="">Sort pokemons</option>
         <option ngValue="name">Name</option>
         <option ngValue="weight">Weight</option>
         <option ngValue="height">Height</option>
+      </select>
+
+      <select name="pageSize" [(ngModel)]="pageSize" (ngModelChange)="pageSizeEvent()">
+        <option ngValue="10">10</option>
+        <option ngValue="20">20</option>
+        <option ngValue="50">50</option>
       </select>
 </div>

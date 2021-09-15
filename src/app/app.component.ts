@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'pokemon-app';
   public search: string = ''; 
   public sort: string = ''; 
+  public pageSize: string = "10"; 
 
    /**
    *  Called when search input changes
@@ -26,6 +27,15 @@ export class AppComponent {
     newPokemonSort(sort: string): void {
       if (this.sort !== sort) {
         this.sort = sort;
+      }
+    }
+
+   /**
+   *  Called when page size select changes
+   */
+    newPokemonPageSize(pageSize: string): void {
+      if (this.pageSize !== pageSize) {
+        this.pageSize = pageSize;
       }
     }
 }

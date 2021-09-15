@@ -11,6 +11,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PokemonTableComponent implements OnInit{
   query: string = '';
   sortQuery:string= '';
+  pageSizeQuery:number=10;
   @Input() set search(newSearch: string) {
     if (newSearch !== this.query) {
       this.query = newSearch;
@@ -19,6 +20,11 @@ export class PokemonTableComponent implements OnInit{
   @Input() set sort(newSort: string) {
     if (newSort !== this.sortQuery) {
       this.sortQuery = newSort;
+    }
+  }
+  @Input() set pageSize(newPageSize: string) {
+    if (+newPageSize !== this.pageSizeQuery) {
+      this.pageSizeQuery = +newPageSize;
     }
   }
 

@@ -6,6 +6,7 @@ import { PokemonDetails } from 'src/interface';
 })
 export class SearchPipe implements PipeTransform {
   transform(value: PokemonDetails[] | null, searchText?: any): PokemonDetails[] {
+    debugger;
     if (!value) {
       return [];
     }
