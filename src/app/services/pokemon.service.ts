@@ -21,9 +21,9 @@ export class PokemonService {
   /**
    * Returns original 151 pokemon
    */
-   getPokemon(size:string, offset:string): Observable<PokeAPI> {
+   getPokemon(): Observable<PokeAPI> {
     return this.http
-      .get<PokeAPI>(`${this.pokeAPI}?limit=${size}&offset=${offset}`)
+      .get<PokeAPI>(`${this.pokeAPI}?limit=251&offset=0`)
       .pipe(catchError(this._handleError));
   }
 

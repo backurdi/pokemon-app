@@ -1,2 +1,2 @@
-<app-pokemon-table-header></app-pokemon-table-header>
-<app-pokemon-table></app-pokemon-table>
+<app-pokemon-table-header (searchChange)="newPokemonSearch($event)" (sortChange)="newPokemonSort($event)"></app-pokemon-table-header>
+<app-pokemon-table [search]="search" [sort]="sort"></app-pokemon-table>

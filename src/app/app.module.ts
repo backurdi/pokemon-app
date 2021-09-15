@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 import { PokemonTableComponent } from './components/pokemon-table/pokemon-table.component';
 import { PokemonTableHeaderComponent } from './components/pokemon-table-header/pokemon-table-header.component';
 import { PokemonCardComponent } from './components/pokemon-table/pokemon-card/pokemon-card.component';
+import { SearchPipe } from './pipes/search.pipe';
+import { SortPipe } from './pipes/sort.pipe';
+import { PagePipe } from './pipes/page.pipe';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,15 @@ import { PokemonCardComponent } from './components/pokemon-table/pokemon-card/po
     PokemonTableComponent,
     PokemonTableHeaderComponent,
     PokemonCardComponent,
+    SearchPipe,
+    SortPipe,
+    PagePipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

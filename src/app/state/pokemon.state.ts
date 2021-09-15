@@ -6,7 +6,8 @@ import { BehaviorSubject, forkJoin } from 'rxjs';
 
 interface StateInterface{
   pokemons:PokemonDetails[],
-  offset:string
+  offset:number,
+  size:number,
 }
 
 @Injectable({
@@ -17,23 +18,21 @@ export class PokemonState {
 
   state:BehaviorSubject<StateInterface> = new BehaviorSubject({
     pokemons:[] as PokemonDetails[],
-    offset:''
+    offset:0,
+    size:10
   });
 
   constructor(private pokemonService: PokemonService) { }
 
-  fetchPokemons(size:string, offset:string){
-    if(this.state.value.offset !== offset){
-      return this.pokemonService.getPokemon(size, offset).pipe(
+  fetchPokemons(){
+      return this.pokemonService.getPokemon().pipe(
         switchMap((pokemonResponse: PokeAPI)=>{
           return forkJoin(pokemonResponse.results.map((pokemon: Results)=>this.pokemonService.getPokemonDetails(pokemon.name)))
         }),
         tap((pokemons: PokemonDetails[])=>{
-          this.state.next({offset:offset, pokemons})
+          this.state.next({...this.state.value,  pokemons})
         })
       ).subscribe();
-    }
-    return this.state.asObservable();
   }
 
   getPokemons(){
