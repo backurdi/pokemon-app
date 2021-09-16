@@ -11,6 +11,7 @@ import { PokemonCardComponent } from './components/pokemon-table/pokemon-card/po
 import { SearchPipe } from './pipes/search.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { PagePipe } from './pipes/page.pipe';
+import { PageNavComponent } from './components/page-nav/page-nav.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PagePipe } from './pipes/page.pipe';
     PokemonCardComponent,
     SearchPipe,
     SortPipe,
-    PagePipe
+    PagePipe,
+    PageNavComponent
   ],
   imports: [
     BrowserModule,

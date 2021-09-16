@@ -6,7 +6,6 @@ import { PokemonDetails } from 'src/interface';
 })
 export class PagePipe implements PipeTransform {
     transform(value:PokemonDetails[], offset:number, size:number){
-      debugger;
-        return [...value.slice(offset*size, size)];
+        return [...value.slice(offset*size, offset*size + size)];
     }
 }

@@ -12,6 +12,8 @@ export class PokemonTableComponent implements OnInit{
   query: string = '';
   sortQuery:string= '';
   pageSizeQuery:number=10;
+  pageNumberQuery:number=0;
+
   @Input() set search(newSearch: string) {
     if (newSearch !== this.query) {
       this.query = newSearch;
@@ -25,6 +27,11 @@ export class PokemonTableComponent implements OnInit{
   @Input() set pageSize(newPageSize: string) {
     if (+newPageSize !== this.pageSizeQuery) {
       this.pageSizeQuery = +newPageSize;
+    }
+  }
+  @Input() set pageNumber(newPageNumber: number) {
+    if (+newPageNumber !== this.pageNumberQuery) {
+      this.pageNumberQuery = +newPageNumber;
     }
   }
 

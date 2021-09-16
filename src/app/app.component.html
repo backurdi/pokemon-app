@@ -1,2 +1,4 @@
 <app-pokemon-table-header (searchChange)="newPokemonSearch($event)" (sortChange)="newPokemonSort($event)" (pageSizeChange)="newPokemonPageSize($event)"></app-pokemon-table-header>
-<app-pokemon-table [search]="search" [sort]="sort" [pageSize]="pageSize"></app-pokemon-table>
+<app-page-nav (navigate)="newPokemonNavigate($event)"></app-page-nav>
+<app-pokemon-table [search]="search" [sort]="sort" [pageSize]="pageSize" [pageNumber]="pageNumber"></app-pokemon-table>
+<app-page-nav (navigate)="newPokemonNavigate($event)"></app-page-nav>
