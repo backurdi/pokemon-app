@@ -29,15 +29,17 @@ export class AppComponent implements OnInit {
     newPokemonSearch(search: string): void {
       if (this.search !== search) {
         this.search = search;
+        localStorage.setItem('searchText', search);
       }
     }
-
-   /**
-   *  Called when sort select changes
-   */
+    
+    /**
+     *  Called when sort select changes
+     */
     newPokemonSort(sort: string): void {
       if (this.sort !== sort) {
         this.sort = sort;
+        localStorage.setItem('sort', sort);
       }
     }
 

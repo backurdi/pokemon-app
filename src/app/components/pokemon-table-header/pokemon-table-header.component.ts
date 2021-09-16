@@ -17,6 +17,14 @@ export class PokemonTableHeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('searchText')){
+      this.searchText = localStorage.getItem('searchText') as string;
+      this.searchEvent();
+    }
+    if(localStorage.getItem('sort')){
+      this.sortText = localStorage.getItem('sort') as string;
+      this.sortEvent();
+    }
   }
 
   /**
