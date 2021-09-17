@@ -6,6 +6,7 @@ import { PokemonDetails } from 'src/interface';
 })
 export class SearchPipe implements PipeTransform {
   transform(value: PokemonDetails[] | null, searchText?: any): PokemonDetails[] {
+    // Filter the pokemon cards based on search query
     if (!value) {
       return [];
     }
@@ -22,8 +23,9 @@ export class SearchPipe implements PipeTransform {
         const name = item.name;
 
         const searchName = JSON.stringify(name).toLowerCase().includes(searchText);
+        const searchAbbilities = JSON.stringify(item.abilities).toLowerCase().includes(searchText);
 
-        if (searchName) {
+        if (searchName || searchAbbilities) {
           matchFound = true;
         }
       }

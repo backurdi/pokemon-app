@@ -19,7 +19,7 @@ export class PokemonService {
   }
 
   /**
-   * Returns original 151 pokemon
+   * Returns 251 pokemon
    */
    getPokemon(): Observable<PokeAPI> {
     return this.http

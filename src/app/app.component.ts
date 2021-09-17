@@ -9,55 +9,67 @@ import { take, tap } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   title = 'pokemon-app';
-  search: string = ''; 
-  sort: string = ''; 
-  pageSize: string = "10"; 
+  search: string = '';
+  sort: string = '';
+  pageSize: string = '10';
   pageNumber: number = 0;
-  pokemonArrSize:number = 0;
+  pokemonArrSize: number = 0;
 
-  constructor(private pokemonState: PokemonState){}
+  constructor(private pokemonState: PokemonState) {}
 
-  ngOnInit(){
-    this.pokemonState.state.pipe(
-      tap(pokemonState=>{this.pokemonArrSize = pokemonState.pokemonArraySize})
-      ).subscribe();
+  ngOnInit() {
+    this.pokemonState
+      .getPokemonsArraySize()
+      .subscribe(arraySize => (this.pokemonArrSize = arraySize));
   }
 
-   /**
-   *  Called when search input changes
+  /**
+   * *  Called when search input changes
+   * @param search Search query text
    */
-    newPokemonSearch(search: string): void {
-      if (this.search !== search) {
-        this.search = search;
-        localStorage.setItem('searchText', search);
-      }
+  newPokemonSearch(search: string): void {
+    if (this.search !== search) {
+      this.search = search;
+      localStorage.setItem('searchText', search);
+      this.pageNumber = 0;
     }
-    
-    /**
-     *  Called when sort select changes
-     */
-    newPokemonSort(sort: string): void {
-      if (this.sort !== sort) {
-        this.sort = sort;
-        localStorage.setItem('sort', sort);
-      }
-    }
+  }
 
-   /**
-   *  Called when page size select changes
+  /**
+   * Called when sort select changes
+   * @param sort What to stort the pokemons on
    */
-    newPokemonPageSize(pageSize: string): void {
-      if (this.pageSize !== pageSize) {
-        this.pageSize = pageSize;
-        this.pageNumber = 0;
-      }
+  newPokemonSort(sort: string): void {
+    if (this.sort !== sort) {
+      this.sort = sort;
+      localStorage.setItem('sort', sort);
+      this.pageNumber = 0;
     }
+  }
 
-    newPokemonNavigate(navigateTo:string){
-      if(navigateTo==='previous' && this.pageNumber !== 0){
-        this.pageNumber = this.pageNumber-1
-      }else if(navigateTo==='next' && +this.pageSize*this.pageNumber < this.pokemonArrSize-1){
-        this.pageNumber = this.pageNumber+1
-      }
+  /**
+   * Called when page size select changes
+   * @param pageSize size of how many cards should be shown
+   */
+  newPokemonPageSize(pageSize: string): void {
+    if (this.pageSize !== pageSize) {
+      this.pageSize = pageSize;
+      this.pageNumber = 0;
     }
+  }
+
+  /**
+   * Called when navigation changes
+   * @param navigateTo which page to navigate to previous or next
+   */
+  newPokemonNavigate(navigateTo: string) {
+    if (navigateTo === 'previous' && this.pageNumber !== 0) {
+      this.pageNumber = this.pageNumber - 1;
+    } else if (
+      navigateTo === 'next' &&
+      +this.pageSize * this.pageNumber < this.pokemonArrSize - 1
+    ) {
+      this.pageNumber = this.pageNumber + 1;
+    }
+  }
 }

@@ -6,7 +6,8 @@ import { PokemonDetails } from 'src/interface';
 })
 export class SortPipe implements PipeTransform {
     transform(value:PokemonDetails[], sortingField:string):PokemonDetails[]{
-        // Strict typing, the type of the value should be updated so dynamic properties could be used
+        // TODO: Strict typing, the type of the value should be updated so dynamic properties could be used
+        // Sorts pokemon cards based on user choice
         if(sortingField==='weight'){
             return [...value.sort((a, b)=>(a.weight < b.weight ? -1 : 1) )];
         }else if(sortingField==='height'){

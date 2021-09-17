@@ -19,10 +19,10 @@ import { PageNavComponent } from './components/page-nav/page-nav.component';
     PokemonTableComponent,
     PokemonTableHeaderComponent,
     PokemonCardComponent,
+    PageNavComponent,
     SearchPipe,
     SortPipe,
     PagePipe,
-    PageNavComponent
   ],
   imports: [
     BrowserModule,

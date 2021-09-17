@@ -45,7 +45,6 @@ export enum TYPE_COLOURS {
 
   interface Ability {
     ability: {name: string, url: string}
-    is_hidden: false
   }
 
   interface Type {

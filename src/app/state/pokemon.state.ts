@@ -22,6 +22,7 @@ export class PokemonState {
 
   constructor(private pokemonService: PokemonService) { }
 
+  // Fetches pokemon arrays and then fetches the details for the individual pokemon, returns a complete array of pokemons with details
   fetchPokemons(){
       return this.pokemonService.getPokemon().pipe(
         take(1),
@@ -29,13 +30,17 @@ export class PokemonState {
           return forkJoin(pokemonResponse.results.map((pokemon: Results)=>this.pokemonService.getPokemonDetails(pokemon.name)))
         }),
         tap((pokemons: PokemonDetails[])=>{
-          debugger;
           this.state.next({pokemonArraySize: pokemons.length,  pokemons})
         })
       ).subscribe();
   }
 
+  // Returns the pokemon array size from the state
   getPokemons(){
     return this.state.pipe(map(pokemonState=>pokemonState.pokemons));
+  }
+
+  getPokemonsArraySize(){
+    return this.state.pipe(map(pokemonState=>pokemonState.pokemonArraySize));
   }
 }

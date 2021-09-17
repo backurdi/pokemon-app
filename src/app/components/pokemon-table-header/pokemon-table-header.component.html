@@ -1,16 +1,23 @@
 <div class="pokemon-header-wrapper">
-    <input type="text" [(ngModel)]="searchText" placeholder="Enter Pokemon name" (ngModelChange)="searchEvent()">
+  <img
+    class="pokemon-logo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png"
+  />
+
+  <div class="header-actions-container">
+    <input class="search-field" type="text" [(ngModel)]="searchText" placeholder="Enter Pokemon name" (ngModelChange)="searchEvent()">
     
-    <select name="sort" [(ngModel)]="sortText" (ngModelChange)="sortEvent()">
+    <select class="sort-dropdown" name="sort" [(ngModel)]="sortText" (ngModelChange)="sortEvent()">
         <option ngValue="">Sort pokemons</option>
         <option ngValue="name">Name</option>
         <option ngValue="weight">Weight</option>
         <option ngValue="height">Height</option>
       </select>
 
-      <select name="pageSize" [(ngModel)]="pageSize" (ngModelChange)="pageSizeEvent()">
+      <select class="page-size-dropdown" name="pageSize" [(ngModel)]="pageSize" (ngModelChange)="pageSizeEvent()">
         <option ngValue="10">10</option>
         <option ngValue="20">20</option>
         <option ngValue="50">50</option>
       </select>
+  </div>
 </div>

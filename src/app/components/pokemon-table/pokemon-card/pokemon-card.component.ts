@@ -6,10 +6,12 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './pokemon-card.component.html',
   styleUrls: ['./pokemon-card.component.scss']
 })
-export class PokemonCardComponent{
-  @Input() pokemon = {} as PokemonDetails
+export class PokemonCardComponent implements OnInit{
+  @Input() pokemon = {} as PokemonDetails;
 
-  constructor() { }
+  ngOnInit(){
+    this.pokemon.name = this.pokemon.name.charAt(0).toUpperCase() + this.pokemon.name.slice(1);
+  }
 
   /**
    * returns colour based on type mapped

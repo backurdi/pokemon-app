@@ -10,6 +10,7 @@ export class PokemonTableHeaderComponent implements OnInit {
   @Output() searchChange = new EventEmitter<string>();
   @Output() sortChange = new EventEmitter<string>();
   @Output() pageSizeChange = new EventEmitter<string>();
+
   searchText:string = '';
   sortText:string = '';
   pageSize:string = "10";
